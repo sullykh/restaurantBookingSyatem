@@ -1,0 +1,2 @@
+module MyApp01 {
+}
