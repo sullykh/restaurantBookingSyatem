@@ -111,7 +111,7 @@ public class RestaurantBookingSystem {
 		static ArrayList<Integer> itemQty   = new ArrayList<Integer>();  // Quantity
 		static ArrayList<String>  itemDescription = new ArrayList<String>();  // Description
 		
-		
+		int newUnit = 10; 
 
 	}
 
