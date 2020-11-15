@@ -39,6 +39,7 @@
 					if available, it will be added 
 					otherwise a print message will show “Out of stock”.
 					-Display the shopping basket.
+					-print a message showing the payment confirmation.
 					-end. */
 
 					
