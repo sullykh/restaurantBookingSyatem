@@ -426,7 +426,7 @@
 					
 					
 					
-						//A method for random table allocation.
+						//A method for random table allocation
 						private static void randomTable() {
 					
 							random_int = (int)(Math.random() * (max - min + 1) + min);
