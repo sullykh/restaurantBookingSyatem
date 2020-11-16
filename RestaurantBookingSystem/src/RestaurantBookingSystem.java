@@ -67,7 +67,7 @@
 					
 					}
 					
-					
+					//The main class in the program.
 					public class RestaurantBookingSystem {
 					
 					
@@ -131,31 +131,27 @@
 						//main method
 						public static void main(String[] args) {
 					
-							// Definition of stocks
-							// ArrayList<Item>  stocks = new ArrayList<Item>();
-					
-							// Basket
-							// ArrayList<Item>  basket = new ArrayList<Item>();	
-							itemName.add("Pizza");
+							//A list of menu items in an array style.
+							itemName.add("Pizza     ");
 							itemCode.add(1);
 							itemPrice.add((int) 10);
 							itemQty.add(50);
 					
 					
-							itemName.add("Steak");
+							itemName.add("Steak     ");
 							itemCode.add(2);
 							itemPrice.add((int) 7);
 							itemQty.add(50);
 					
 					
 					
-							itemName.add("Sandwich");
+							itemName.add("Sandwich  ");
 							itemCode.add(3);
 							itemPrice.add((int) 5);
 							itemQty.add(50);
 					
 					
-							itemName.add("Water");
+							itemName.add("Water     ");
 							itemCode.add(4);
 							itemPrice.add((int) 1);
 							itemQty.add(30);
@@ -166,22 +162,22 @@
 							itemPrice.add((int) 2);
 							itemQty.add(30);
 					
-							itemName.add("Tea   ");
+							itemName.add("Tea       ");
 							itemCode.add(6);
 							itemPrice.add((int) 2);
 							itemQty.add(20);
 					
-							itemName.add("Coffee");
+							itemName.add("Coffee    ");
 							itemCode.add(7);
 							itemPrice.add((int) 2);
 							itemQty.add(20);
 					
-							itemName.add("Ice cream");
+							itemName.add("Ice cream ");
 							itemCode.add(8);
 							itemPrice.add((int) 2);
 							itemQty.add(20);
 					
-							itemName.add("Chocolate");
+							itemName.add("Chocolate ");
 							itemCode.add(9);
 							itemPrice.add((int) 1);
 							itemQty.add(30);
@@ -192,7 +188,7 @@
 							System.out.println();
 							//taking user input.
 							System.out.println("Please enter your full-name> ");
-							userName = input.next();
+							userName = input.nextLine();
 					
 					
 							
@@ -246,7 +242,7 @@
 								//-3- Select a product
 								//Ask the user to enter item code
 								System.out.println();
-								System.out.println("Please enter an item code to select the item or 0 for payment ");
+								System.out.println("Please enter an item code to select the item or 0 to make a payment>> ");
 					
 								// Entering item code
 								tempItemCode = input.nextInt() ;
@@ -256,10 +252,13 @@
 									// termination point
 									break; 
 								}
-								else {
-					
+								else if (tempItemCode > 9) {
+									System.out.println("Invalid entry, Please try again.");
+								} else {
+									
+								
 									//	Ask for the quantity
-									System.out.println("How many do you need? > ");
+									System.out.println("How many would you like? > ");
 									tempItemQty = input.nextInt();
 					
 					
@@ -267,25 +266,35 @@
 									if(itemQty.get(tempItemCode) >= tempItemQty ) {			
 										//    if available add it to the cart
 										addToBasket(tempItemCode, tempItemQty);
-									}	
+									}
+									
+									
+									if (tempItemCode == 10 ) {
+										removeFromBasket(tempItemCode, tempItemQty);
+									displayBox();
+									}
 									//    else show a message out of stock
 									else{
-										System.out.println("Out of stock");
+										System.out.println("Out of stock.");
 					
 									}
 									
 								
 					
 									//	Show cart with the total
+									
 									displayBox();
-					
+									
 									
 								}
+								
+								
 					
 							}
 							System.out.println();
-							System.out.println("A confirmation receipt for " + userName + " ,Table number "
-									+ x + y  + "Total cost £" + cost );
+							// A message displaying the final confirmation, with customer name, table number, total cost.
+							System.out.println("A confirmation receipt for: " + userName + " ,Table number: "
+									+ "[" + x + y + "]" + " ,Total cost: £" + cost + ".");
 							
 					
 						} // Ending of main method
@@ -301,7 +310,7 @@
 					
 					
 							// 		Name  Code  Price
-							System.out.println( "Code \t: Name \t: Price \t: Qty\t: " );
+							System.out.println( "Code \t: Name    \t: Price    \t:Qty\t: " );
 							for( int i=0; i< basketName.size(); i++ ) {
 					
 								System.out.println(basketCode.get(i) + " \t: " + basketName.get(i) + "\t: "  
@@ -320,7 +329,7 @@
 					
 						} //------------- end of item removal method.
 					
-						// Add the specification of an item into a box
+						// Add item properties into the shopping basket
 						private static void addToBasket(int tempItemCode, int tempItemQty) {
 					
 							basketCode.add(tempItemCode);
@@ -328,7 +337,7 @@
 							basketQty.add( tempItemQty);
 							basketPrice.add( tempItemQty * itemPrice.get(tempItemCode));
 					
-						}  
+						} // End of the adding to basked method.   
 					
 					
 					
@@ -344,7 +353,8 @@
 							}
 					
 							// Display the total cost
-							System.out.println("The total cost  is £" + cost );
+							System.out.println("The total cost  is £" + cost + ".");
+							System.out.println();
 					
 					
 							// payment instructions 
@@ -369,7 +379,7 @@
 					
 						//A method for displaying all tables
 						public static void  displayTable1() {
-					
+						// a for loop to iterate through all row and columns in order to display tables. 
 							for(int i =0; i<6; i++) {
 								for(int j=0; j<7; j++) { 
 									System.out.print(tables[i][j]);
@@ -391,7 +401,7 @@
 					
 					
 					
-								// Reads the positions
+								// Reads the positions for table number.
 								x = input.nextInt(); 
 								y = input.nextInt(); 
 								tables[x][y] = "[XX]";
@@ -429,13 +439,13 @@
 						private static void itemList () {
 					
 							//  Name 	 Code 	 Price 		Quantity 	Description
-							System.out.println( "Code\t: Name     \t: Price  \t:Qty  " );
+							System.out.println( "Code\t: Name        \t: Price  \t:Qty  " );
 							for( int i=0; i< itemName.size(); i++ ) {
 					
-								System.out.println( itemCode.get(i) + " \t: " +  itemName.get(i) + " \t: " + itemPrice.get(i) + "\t\t:" + itemQty.get(i)  );
+								System.out.println( itemCode.get(i) + " \t: " +  itemName.get(i) +   " \t: " + itemPrice.get(i) + "\t\t:" + itemQty.get(i)  );
 					
 							}
-						}
+						} // Ending of the itemList method -----------------------------------
 					
 					
 					}
